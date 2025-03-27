@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wenliuyi.github.io/posts/2bdc7f67.html</loc>
+    <loc>http://wenliuyi.github.io/posts/46623c6f.html</loc>
     
     <lastmod>2025-03-27</lastmod>
     
@@ -12,6 +12,15 @@
   
   <url>
     <loc>http://wenliuyi.github.io/posts/7f49fcfe.html</loc>
+    
+    <lastmod>2025-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/2bdc7f67.html</loc>
     
     <lastmod>2025-03-27</lastmod>
     
@@ -167,13 +176,6 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Intorduction-to-AI/</loc>
-    <lastmod>2025-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/categories/Database/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -195,7 +197,7 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/OS/</loc>
+    <loc>http://wenliuyi.github.io/categories/Intorduction-to-AI/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -203,6 +205,13 @@
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/OS/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
