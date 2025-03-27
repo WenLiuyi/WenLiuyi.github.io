@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wenliuyi.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-03-27T04:51:11.000Z">
-<meta property="article:modified_time" content="2025-03-27T05:36:51.103Z">
+<meta property="article:modified_time" content="2025-03-27T06:07:52.126Z">
 <meta property="article:author" content="Liuyi Wen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://wenliuyi.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://wenliuyi.github.io/posts/46623c6f.html",
   "image": "http://wenliuyi.github.io/img/butterfly-icon.png",
   "datePublished": "2025-03-27T04:51:11.000Z",
-  "dateModified": "2025-03-27T05:36:51.103Z",
+  "dateModified": "2025-03-27T06:07:52.126Z",
   "author": [
     {
       "@type": "Person",
@@ -158,7 +158,7 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">详解变分自编码器</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">详解变分自编码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-27T04:51:11.000Z" title="发表于 2025-03-27 12:51:11">2025-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-27T05:36:51.103Z" title="更新于 2025-03-27 13:36:51">2025-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Intorduction-to-AI/">Intorduction to AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="vae">VAE</h1>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">详解变分自编码器</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">详解变分自编码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-27T04:51:11.000Z" title="发表于 2025-03-27 12:51:11">2025-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-27T06:07:52.126Z" title="更新于 2025-03-27 14:07:52">2025-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Intorduction-to-AI/">Intorduction to AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="vae">VAE</h1>
 <h2 id="信息论">信息论</h2>
 <h3 id="信息量">信息量</h3>
 <p><span
@@ -206,13 +206,15 @@ class="math inline">\(X\)</span>的最优期望编码长度，有： <span
 class="math display">\[
 \mathbb{E}_{X\sim p(X)}[-\log p(X)]\leq \mathbb{E}_{X\sim p(X)}[-\log
 q(X)]
-\]</span> &gt; 转为证明： &gt; <span class="math display">\[
+\]</span></p>
+<blockquote>
+<p>转为证明： <span class="math display">\[
 \sum_{i=1}^{n}p(x_i)[\log p(x_i)-\log (q(x_i))]\geq 0.
-&gt; \]</span> &gt; 由于对任意<span
+\]</span> 由于对任意<span
 class="math inline">\(x&gt;0\)</span>,有：<span
 class="math inline">\(\ln x\leq x-1\)</span>,所以<span
-class="math inline">\(-\log_{2}x\geq\frac{1-x}{\ln 2}\)</span> &gt; 因此
-&gt; <span class="math display">\[
+class="math inline">\(-\log_{2}x\geq\frac{1-x}{\ln 2}\)</span> 因此
+<span class="math display">\[
 \sum_{i=1}^{n}p(x_i)[\log p(x_i)-\log (q(x_i))]
 \\
 =\sum_{i=1}^{n}p(x_i)[\log (\frac{p(x_i)}{q(x_i)})]
@@ -222,9 +224,10 @@ class="math inline">\(-\log_{2}x\geq\frac{1-x}{\ln 2}\)</span> &gt; 因此
 =\frac{1}{\ln 2}(\sum_{i=1}^{n}p(x_i)-\sum_{i=1}^{n}q(x_i))
 \\
 =0
-&gt; \]</span> &gt; 交叉熵在机器学习中，作为损失函数。利用<span
+\]</span> 交叉熵在机器学习中，作为损失函数。利用<span
 class="math inline">\(q(x)\)</span>逼近<span
 class="math inline">\(p(x)\)</span>，使得交叉熵最小。</p>
+</blockquote>
 <h3 id="kl-divergence">KL Divergence</h3>
 <p>对于离散随机变量，分布<span class="math inline">\(p\)</span>和<span
 class="math inline">\(q\)</span>的<span
@@ -258,14 +261,13 @@ class="math inline">\(\{x_1,...,x_n\}\)</span>.
 class="math inline">\(\theta_{MLE}\)</span>，使得：<span
 class="math inline">\(P(X|\theta_{MLE})\)</span>最大化。即在参数<span
 class="math inline">\(\theta_{MLE}\)</span>下，训练集<span
-class="math inline">\(X\)</span>出现概率最大。 &gt; 有似然函数： &gt;
-<span class="math display">\[
-L(\theta)=P(X|\theta)
-\\
-=P(x_1|\theta)·P(x_2|\theta)···P(x_n|\theta)
-\\
+class="math inline">\(X\)</span>出现概率最大。</p>
+<blockquote>
+<p>有似然函数： <span class="math display">\[
+L(\theta)=P(X|\theta) \\
+=P(x_1|\theta)·P(x_2|\theta)···P(x_n|\theta) \\
 =\prod_{i=1}^{n}P(x_i|\theta).
-&gt; \]</span> &gt; 则有： &gt; <span class="math display">\[
+\]</span> 则有： <span class="math display">\[
 \theta_{MLE}=argmax_{\theta}L(\theta)
 \\
 =argmax_{\theta}\log L(\theta)
@@ -273,7 +275,8 @@ L(\theta)=P(X|\theta)
 =argmin_{\theta}-\log L(\theta)
 \\
 =argmin_{\theta}-\sum_{i=1}^{n}\log P(x_i|\theta).
-&gt; \]</span></p>
+\]</span></p>
+</blockquote>
 <p>区分Probability和Likelihood: 1. 给定一个<span
 class="math inline">\(P(X|\theta)\)</span>，若称为Probability，则<span
 class="math inline">\(\theta\)</span>已知，<span
