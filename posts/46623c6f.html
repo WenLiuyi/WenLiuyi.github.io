@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wenliuyi.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-03-27T04:51:11.000Z">
-<meta property="article:modified_time" content="2025-03-27T06:17:26.082Z">
+<meta property="article:modified_time" content="2025-03-27T06:30:55.673Z">
 <meta property="article:author" content="Liuyi Wen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://wenliuyi.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://wenliuyi.github.io/posts/46623c6f.html",
   "image": "http://wenliuyi.github.io/img/butterfly-icon.png",
   "datePublished": "2025-03-27T04:51:11.000Z",
-  "dateModified": "2025-03-27T06:17:26.082Z",
+  "dateModified": "2025-03-27T06:30:55.673Z",
   "author": [
     {
       "@type": "Person",
@@ -158,7 +158,7 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">详解变分自编码器</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">详解变分自编码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-27T04:51:11.000Z" title="发表于 2025-03-27 12:51:11">2025-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-27T06:17:26.082Z" title="更新于 2025-03-27 14:17:26">2025-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Intorduction-to-AI/">Intorduction to AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="vae">VAE</h1>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">详解变分自编码器</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">详解变分自编码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-27T04:51:11.000Z" title="发表于 2025-03-27 12:51:11">2025-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-27T06:30:55.673Z" title="更新于 2025-03-27 14:30:55">2025-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Intorduction-to-AI/">Intorduction to AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="vae">VAE</h1>
 <h2 id="信息论">信息论</h2>
 <h3 id="信息量">信息量</h3>
 <p><span
@@ -349,22 +349,21 @@ l(y_i,f(\vec{x_i}))=\frac{1}{2}{(y_i-f(\vec{x_i}))}^{2}.
 <ol type="1">
 <li><p>几何角度：最小化样本拟合值与真实值之间欧式距离的平方。
 模型会更加重视拟合效果差的样本点，因此异常值影响较大。</p></li>
-<li><p>概率角度：</p></li>
-</ol>
-<blockquote>
-<p>假设存在某<span class="math inline">\(\vec{w&#39;}\)</span>和<span
+<li><p>概率角度： 假设存在某<span
+class="math inline">\(\vec{w&#39;}\)</span>和<span
 class="math inline">\(b&#39;\)</span>，使得数据集中各样本<span
 class="math inline">\((\vec{x_i},y_i)\)</span>满足：<span
 class="math inline">\(y_i=\vec{w&#39;}·\vec{x_i}+b&#39;+\epsilon\)</span>。其中<span
-class="math inline">\(\epsilon\)</span>是随机变量，代表样本中的噪声分布。</p>
+class="math inline">\(\epsilon\)</span>是随机变量，代表样本中的噪声分布。</p></li>
+</ol>
 <p>假设噪声服从高斯分布，即：<span
 class="math inline">\(\epsilon\sim\mathcal{N}(0,{\sigma}^{2})\)</span>.则：
 <span
 class="math inline">\(y_i\sim\mathcal{N}(\vec{w&#39;}·\vec{x_i}+b&#39;,{\sigma}^{2})\)</span>.
 那么： <span class="math display">\[
-p(y_i|\vec{x_i&#39;},\vec{w&#39;},b&#39;)=\frac{1}{\sqrt{2\pi{\sigma}^{2}}}\exp(-\frac{(y_i-{(\vec{w&#39;}·\vec{x_i}+b&#39;)}^{2})}{2{\sigma}^{2}})
-.\]</span></p>
-</blockquote>
+p(y_i|\vec{x_i&#39;},\vec{w&#39;},b&#39;)=\frac{1}{\sqrt{2\pi{\sigma}^{2}}}\exp(-\frac
+{(y_i-{(\vec{w&#39;}·\vec{x_i}+b&#39;)}^{2})}{2{\sigma}^{2}}).
+\]</span></p>
 <p>利用MLE估计<span class="math inline">\(\vec{w&#39;}\)</span>和<span
 class="math inline">\(b&#39;\)</span>的真值，则极大似然函数为： <span
 class="math display">\[
@@ -506,8 +505,8 @@ class="math inline">\(\tilde{X}=f(z)\)</span>，通过编码<span
 class="math inline">\(z\)</span>还原出<span
 class="math inline">\(\tilde{X}\)</span>. - 损失函数：重构误差：<span
 class="math inline">\(\mathbb{l}={\lVert X-\tilde{X}
-\rVert}^{2}\)</span> <img
-src="8374bf2efb36263139cc24ad9dcf70b.png" /></p>
+\rVert}^{2}\)</span></p>
+<p><img src="image-1.png" /></p>
 <p>例子：输入图片<span class="math inline">\(X\in \mathbb{R}^{C\times
 H\times W}\)</span>，训练一个自编码器。</p>
 <p>编码器<span
@@ -547,7 +546,7 @@ class="math inline">\(z_i\)</span>，希望Decoder学会一个映射，输出<sp
 class="math inline">\(z_i\)</span>对应的<span
 class="math inline">\(X\)</span>的分布<span
 class="math inline">\(p_\theta(X|z_i)\)</span>.</p>
-<p><img src="3bf47babb3edf343c24c2cb1ff1d20b.png" /></p>
+<p><img src="image-2.png" /></p>
 <p>假设：给定任意<span class="math inline">\(z_i\)</span>后，对应的<span
 class="math inline">\(X\)</span>服从某个各维度独立的多元高斯分布，即：
 <span class="math display">\[
@@ -621,8 +620,10 @@ class="math inline">\(z_i\)</span>，代表与<span
 class="math inline">\(x_i\)</span>相似的一类低维样本；</li>
 <li>将采样的一个<span
 class="math inline">\(z_i\)</span>输入Decoder，得到似然的分布<span
-class="math inline">\(p_\theta(X|z_i)\)</span>；（将似然分布也视作一个各维度独立的高斯分布，输出参数{{{\sigma_i}^{'}}^{2}}和{\mu_i}^{'}；
-<img src="ff417af17b566a160b99407bb6107a1.png" /></li>
+class="math inline">\(p_\theta(X|z_i)\)</span>；（将似然分布也视作一个各维度独立的高斯分布，输出参数{{{\sigma_i}^{'}}^{2}}和{\mu_i}^{'}；</li>
+</ol>
+<p><img src="image-3.png" /></p>
+<ol start="4" type="1">
 <li>从对应的分布中采样，生成<span
 class="math inline">\(x_i\)</span>对应的重建数据<span
 class="math inline">\(X_i\)</span>。</li>
@@ -639,8 +640,8 @@ class="math display">\[
 z_i=\mu_i+\sigma_i\odot\epsilon_i
 \]</span> 得到的<span class="math inline">\(z_i\)</span>代表与<span
 class="math inline">\(x_i\)</span>相似的一类样本。 （<span
-class="math inline">\(\odot\)</span>代表逐元素相乘） <img
-src="c446f12e8194fda1ccdb711ef6aa4f9.png" /></p>
+class="math inline">\(\odot\)</span>代表逐元素相乘）</p>
+<p><img src="image-4.png" /></p>
 <h4 id="计算损失">计算损失</h4>
 <p>利用MLE最大化，确定参数<span
 class="math inline">\(\theta\)</span>，有： <span
@@ -698,7 +699,7 @@ class="math inline">\(d\)</span>元高斯分布时，有：
 D_{KL}(q_\phi(z|X),p(z))=\sum_{j=1}^{d}\frac{1}{2}(-1+{\sigma^{{(j)}^{2}}}+{\mu^{{(j)}^{2}}}-\log{\sigma^{{(j)}^{2}}})
 \]
 
-其中：{a}^{{(j)}^{2}}代表向量<span
+其中：${a}^{{(j)}^{2}}$代表向量<span
 class="math inline">\(a\)</span>的第<span
 class="math inline">\(j\)</span>个元素的平方。</p>
 <h5 id="reconstruction-lossmathbbe_q_philog-p_thetaxz">Reconstruction
