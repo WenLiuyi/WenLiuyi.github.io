@@ -164,8 +164,7 @@
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">BUAA-OS Lab1 实验笔记</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">BUAA-OS Lab1 实验笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-18T07:08:53.000Z" title="发表于 2025-03-18 15:08:53">2025-03-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-21T14:15:27.523Z" title="更新于 2025-03-21 22:15:27">2025-03-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OS/">OS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OS/BUAA-OS-lab/">BUAA OS lab</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="总前言">总前言</h1>
 <p>操作系统是大二下学期的一门核心专业课，实验部分分为6个实验（Lab1 ~
 Lab6）。采用增量式实验设计思想，每个实验包含的内核代码量在几百行左右，并提供了代码框架和代码示例，要求阅读源码、理解机制并补全核心代码。每个实验可以独立运行和评测，最后实现一个可以在MIPS平台上运行的小型操作系统。以此专题，纪念大二下的每个“备受折磨”的日夜，重温操作系统的核心理念。
-实验代码仓库位于<a
-target="_blank" rel="noopener" href="https://github.com/WenLiuyi/OS_on_MIPS">OS_on_MIPS</a>.</p>
+实验代码仓库位于<a target="_blank" rel="noopener" href="https://github.com/WenLiuyi/OS_on_MIPS">OS_on_MIPS</a>.</p>
 <p>总流程：实验编写的操作系统代码在Linux系统中，通过Makefile组织，通过交叉编译产生可执行文件；再使用QEMU模拟器运行该可执行文件，实现MOS操作系统的运行。</p>
 <h2 id="内核与启动">内核与启动</h2>
 <p><strong>内核</strong>是操作系统最核心的部分，负责与硬件直接交互，并为用户进程提供服务。在<strong>计算机启动时，内核需要被加载到内存中</strong>，但不宜放在磁盘（CPU无法直接从磁盘访问数据）或内存（易失性）中，因此放在一个<strong>非易失性存储器中（如ROM或FLASH）</strong>。不过，将操作系统直接放入ROM或FLASH会面临以下几个问题：
@@ -191,7 +190,7 @@ ROM或FLASH的存储空间有限，无法存放较大的内核; 2.
 <ol start="3" type="1">
 <li>（不属于Bootloader）：</li>
 </ol>
-<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image.png" /></p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/48d27dfa/image.png"></p>
 <p>BootLoader的操作模式分为：<strong>启动加载模式</strong>（从本地存储器（如硬盘）加载内核镜像）和
 <strong>下载模式</strong>（通过串口或网络等方式下载远程内核镜像）。</p>
 <p>总结：Bootloader
@@ -242,17 +241,15 @@ ROM或FLASH的存储空间有限，无法存放较大的内核; 2.
 <h2 id="内核的入口">内核的入口</h2>
 <p>QEMU模拟器在加载内核时：按照可执行文件中所记录的地址，将内核中的代码、数据，加载到相应的位置，并将CPU控制权移交给内核。那么抛出两个问题：
 1. 内核应该被放在哪里呢？ 2. 如何将内核加载到上述位置呢？</p>
-<h3
-id="寻找内核的正确位置mips内存布局">寻找内核的正确位置：MIPS内存布局</h3>
+<h3 id="寻找内核的正确位置mips内存布局">寻找内核的正确位置：MIPS内存布局</h3>
 <p><strong>内核放在<code>kseg0</code></strong>.</p>
-<p>MIPS 体系结构的虚拟地址空间大小为<code>4GB</code>，布局如下图： <img
-src="image-1.png" /></p>
+<p>MIPS 体系结构的虚拟地址空间大小为<code>4GB</code>，布局如下图： <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/48d27dfa/image-1.png"></p>
 <table>
 <colgroup>
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 56%" />
-<col style="width: 30%" />
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 56%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr>
@@ -289,8 +286,7 @@ src="image-1.png" /></p>
 </tr>
 </tbody>
 </table>
-<h3
-id="控制加载地址linker-script">控制加载地址：<code>Linker Script</code></h3>
+<h3 id="控制加载地址linker-script">控制加载地址：<code>Linker Script</code></h3>
 <p>从上一节生成<code>MOS</code>的第3步中，可见：是使⽤<code>$(link_script)</code>
 将<code>$(objects)</code>
 <strong>链接</strong>，生成可执行文件。这里的<code>$(link_script)</code>即<code>kernel.lds</code>，其中记录了各个节应该如何映射到段，以及各个段应该被加载到的位置。包括以下段：

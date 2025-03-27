@@ -166,16 +166,12 @@
 <p>首先致谢CMU-db无私将这门质量极高、资源极齐全的数据库课程，以及相关基础设施（GradeScope,
 Discord）和课程资料（Lectures, Notes,
 Homework）完全开源,让一个在本科数据库课程上只学会了抽象理念和SQL语句的孩子，能踏上一条自学之路（手动狗头）
-其次,感谢<a
-target="_blank" rel="noopener" href="https://csdiy.wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/15445/">CS自学指南</a>,将计算机领域的众多好课分享给我们.</p>
+其次,感谢<a target="_blank" rel="noopener" href="https://csdiy.wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/15445/">CS自学指南</a>,将计算机领域的众多好课分享给我们.</p>
 <p>本专题将详尽地记录2024 Fall对应Lecture和Lab的学习经历.</p>
 <h3 id="课程链接">课程链接</h3>
-<p><strong>课程主页</strong>:<a
-target="_blank" rel="noopener" href="https://15445.courses.cs.cmu.edu/fall2024/">https://15445.courses.cs.cmu.edu/fall2024/</a>
-<strong>Discord</strong>:<a
-target="_blank" rel="noopener" href="https://discord.com/channels/724929902075445281/752529819148877904">https://discord.com/channels/724929902075445281/752529819148877904</a>
-<strong>Gradescope</strong>:<a
-target="_blank" rel="noopener" href="https://www.gradescope.com/courses/817458">https://www.gradescope.com/courses/817458</a>
+<p><strong>课程主页</strong>:<a target="_blank" rel="noopener" href="https://15445.courses.cs.cmu.edu/fall2024/">https://15445.courses.cs.cmu.edu/fall2024/</a>
+<strong>Discord</strong>:<a target="_blank" rel="noopener" href="https://discord.com/channels/724929902075445281/752529819148877904">https://discord.com/channels/724929902075445281/752529819148877904</a>
+<strong>Gradescope</strong>:<a target="_blank" rel="noopener" href="https://www.gradescope.com/courses/817458">https://www.gradescope.com/courses/817458</a>
 Entry Code: <code>WWWJZ5</code> (学校记得改成CMU) &gt; In exchange for
 making this available to the public, we ask that you DO NOT make your
 project implementations public on Github or other source code
@@ -206,8 +202,7 @@ repositories.</p>
 <h3 id="project-0-2024-fall">Project #0 (2024 Fall)</h3>
 <p>2024
 Fall的预实验,集中于理解和实现一个基于概率统计的<strong>大数据基数统计</strong>算法--HyperLoglog;在此过程中,熟悉<code>C++</code>的基本应用.</p>
-<p><code>C++</code>的基本知识可见以下两篇博客: <a
-href="/post1/">C++中的引用、移动语义、模板、包装类、迭代器和命名空间</a>
+<p><code>C++</code>的基本知识可见以下两篇博客: <a href="/post1/">C++中的引用、移动语义、模板、包装类、迭代器和命名空间</a>
 <a href="/post2/">C++标准库：容器、动态内存、同步原语</a></p>
 <p>我们从HyperLogLog的算法理论开始.</p>
 <h4 id="hyperloglog算法">HyperLogLog算法</h4>
@@ -222,31 +217,19 @@ Facebook
 1. 生成 n 个均匀分布在 0 和 1 之间的数字； 2.
 将一些数字随机复制任意次数； 3. 对上述数据集，随机排序。
 使用哈希函数（哈希值被规范化并在 0 和 1
-之间均匀分布），设最小的哈希值为<span
-class="math inline">\(y_{min}=hash(x)\)</span>，<strong>将唯一条目的数量估计为1/y_{min}.</strong>
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-4.png" />
+之间均匀分布），设最小的哈希值为<span class="math inline">\(y_{min}=hash(x)\)</span>，<strong>将唯一条目的数量估计为1/y_{min}.</strong>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-4.png">
 然而，估计结果依赖于最小哈希值，而最小哈希值可能恰好太小，从而夸大了我们的估计。因此该方法具有高度可变性。</p>
 <h5 id="概率计数">概率计数</h5>
 <p>为了减少之前方法中的高可变性，我们可以通过<strong>计算哈希值二进制表示中，开头的零位数</strong>来改进。
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-5.png" /> 平均而言，每<span
-class="math inline">\(2^k\)</span>个不同条目，将出现<span
-class="math inline">\(k\)</span>个连续的零序列，因此转为记录：最长的连续零序列的长度。即：</p>
-<p>集合{<span class="math inline">\({x_1,...,x_M}\)</span>}的基数为<span
-class="math inline">\(2^R\)</span>，其中：<span
-class="math inline">\(R=max\)</span>{<span
-class="math inline">\(\rho(x_1),...,\rho(x_M)\)</span>}，<span
-class="math inline">\(\rho(x_1)\)</span>为<span
-class="math inline">\(hash(x_i)\)</span>的二进制表示中，前导0的数目。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-5.png"> 平均而言，每<span class="math inline">\(2^k\)</span>个不同条目，将出现<span class="math inline">\(k\)</span>个连续的零序列，因此转为记录：最长的连续零序列的长度。即：</p>
+<p>集合{<span class="math inline">\({x_1,...,x_M}\)</span>}的基数为<span class="math inline">\(2^R\)</span>，其中：<span class="math inline">\(R=max\)</span>{<span class="math inline">\(\rho(x_1),...,\rho(x_M)\)</span>}，<span class="math inline">\(\rho(x_1)\)</span>为<span class="math inline">\(hash(x_i)\)</span>的二进制表示中，前导0的数目。</p>
 <p>此方法有两个缺点： 1. 只能提供基数的 2
 的幂估计，即结果只可能是：1，2，4，8，... 2.
 如果恰巧遇到一个有太多连续前导0的条目，将产生极不准确的基数估计。</p>
-<h5
-id="提高准确性loglog采用多个估计量">提高准确性：LogLog，采用多个估计量</h5>
+<h5 id="提高准确性loglog采用多个估计量">提高准确性：LogLog，采用多个估计量</h5>
 <p>上一个方法中，只采用了一个估计量，即：最大连续前导零数。为了改进，我们<strong>采用多个独立估计器，并对结果取平均</strong>，以减少单个估计器的方差。
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-6.png" /> 可以通过使用<span
-class="math inline">\(m\)</span>个独立的哈希函数实现这点，分别计算出<span
-class="math inline">\(R_1,...,R_m\)</span>，取算数平均，作为<span
-class="math inline">\(R\)</span>的估计值。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-6.png"> 可以通过使用<span class="math inline">\(m\)</span>个独立的哈希函数实现这点，分别计算出<span class="math inline">\(R_1,...,R_m\)</span>，取算数平均，作为<span class="math inline">\(R\)</span>的估计值。</p>
 <p>但是该方法对于每个条目，均需计算其相对于每个哈希函数的哈希值，计算上太昂贵。能不能采用单个哈希函数解决呢？</p>
 <p>学者们提出的一个解决方案是：<strong>使用哈希值的前k位作为桶的索引；计算剩余部分的最长连续
 0 序列</strong>。</p>
@@ -254,19 +237,13 @@ class="math inline">\(R\)</span>的估计值。</p>
 1.
 使用最左边的四个位<code>(k=4)</code>作为桶索引，它告诉我们要更新哪个存储桶（十进制为
 = 11）； 2. 在剩余部分中，获取右侧的最长连续 0序列，此时该序列长度为 5；
-3. 因此，使用 16 个存储桶，将存储桶编号 11 更新为值 5，如下所示。 <img
-src="image-7.png" /></p>
-<p>通过拥有<span
-class="math inline">\(m\)</span>个桶，我们模拟了拥有<span
-class="math inline">\(m\)</span>个不同哈希函数的情况。基数估计公式如下：</p>
+3. 因此，使用 16 个存储桶，将存储桶编号 11 更新为值 5，如下所示。 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-7.png"></p>
+<p>通过拥有<span class="math inline">\(m\)</span>个桶，我们模拟了拥有<span class="math inline">\(m\)</span>个不同哈希函数的情况。基数估计公式如下：</p>
 <p><span class="math inline">\(CARDINALITY_{LogLog}=constant · m ·
 2^{\frac{1}{m}\sum_{j=1}^{N}R_j}\)</span></p>
-<p>对于 m 个桶，这会将估计器的标准误差降低到大约 <span
-class="math inline">\(\frac{1.3}{\sqrt{m}}\)</span>。 &gt;
-对于2048个桶，每个桶5位（最多可以记录32个连续0），则足以记录高达<span
-class="math inline">\(2^{27}\)</span>的基数，只占用2048*5=1.2KB的内存（平均错误率大约2.8%）</p>
-<p>更多可见以下文章: <a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110364156">https://zhuanlan.zhihu.com/p/110364156</a></p>
+<p>对于 m 个桶，这会将估计器的标准误差降低到大约 <span class="math inline">\(\frac{1.3}{\sqrt{m}}\)</span>。 &gt;
+对于2048个桶，每个桶5位（最多可以记录32个连续0），则足以记录高达<span class="math inline">\(2^{27}\)</span>的基数，只占用2048*5=1.2KB的内存（平均错误率大约2.8%）</p>
+<p>更多可见以下文章: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110364156">https://zhuanlan.zhihu.com/p/110364156</a></p>
 <h4 id="lab整体实现思路">Lab整体实现思路</h4>
 <p>在实际应用中，一些系统将最左侧的 1
 位的位置存储在寄存器中（MSB），而另一些系统则存储最右侧连续零的个数（LSB）。在这个项目中：
@@ -286,7 +263,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110364156">htt
 一个固定大小的数组，存储最低位的几个比特（leading bits） *
 <code>Overflow Bucket</code>（溢出桶）:
 一个哈希表:键为桶索引(和密集桶索引相同),值为超出密集桶最大容量的高位比特信息，避免溢出。
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-9.png" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-9.png">
 如上图：如果某个值的二进制表示中，右侧连续<code>0</code>的数量为<code>33</code>，其二进制形式为<code>0100001</code>。在这种情况下，会将其拆分成两部分，首先是3个<code>MSB</code>（最高有效位）<code>010</code>，接着是4个<code>LSB</code>（最低有效位）<code>0001</code>。<code>0001</code>将存储在密集桶（Dense
 Bucket）中，而<code>MSB</code>部分<code>010</code>将存储在溢出桶（Overflow
 Bucket）中。</p>
@@ -315,7 +292,7 @@ Bucket）中。</p>
 <h5 id="本地测试">本地测试</h5>
 <ol type="1">
 <li><p>创建开发环境 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake -DCMAKE_BUILD_TYPE=Debug ..</span><br><span class="line">$ make -j`<span class="built_in">nproc</span>`</span><br></pre></td></tr></table></figure></p></li>
-<li><p>本地测试 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ make -j$(<span class="built_in">nproc</span>) hyperloglog_test</span><br><span class="line">$ ./test/hyperloglog_test</span><br></pre></td></tr></table></figure> <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-10.png" /></p></li>
+<li><p>本地测试 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ make -j$(<span class="built_in">nproc</span>) hyperloglog_test</span><br><span class="line">$ ./test/hyperloglog_test</span><br></pre></td></tr></table></figure> <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-10.png"></p></li>
 </ol>
 <h5 id="打包">打包</h5>
 <ol type="1">
@@ -325,17 +302,16 @@ Bucket）中。</p>
 <p>这里会遇到一个问题:
 压缩包里的内容,正常应该是用于覆盖源文件的两个<code>.h</code>文件和<code>.cpp</code>文件(即我们写的),但压缩包里似乎并不是.</p>
 <p>此时是build打包时出了问题,我们去看看它的<code>Makefile</code>,找到<code>submit-p0</code>对应的文件路径:
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-11.png" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-11.png">
 去<code>CMakeFiles/submit-p0.dir/build.make</code>里找到真正打包的东西,改成我们想要的:
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="image-12.png" /></p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/428c6b54/image-12.png"></p>
 <h5 id="格式检查">格式检查</h5>
 <p>这一步必须,否则不符合标准代码风格,提交到Gradescope也是0分:
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make format</span><br><span class="line">make check-lint</span><br><span class="line">make check-clang-tidy-p0</span><br></pre></td></tr></table></figure> 记我报过的错: ######
 变量命名(readability-identifier-naming) 根据常见的 C++
 编码规范，变量应该使用小写字母并采用下划线分隔（即蛇形命名法）.
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="type">double</span> z = <span class="number">0.0</span>;  <span class="comment">// 将 Z 修改为 z</span></span><br><span class="line"><span class="function">std::bitset&lt;OVERFLOW_BUCKET_SIZE&gt; <span class="title">overflow_value</span><span class="params">(num_trailing_zeros &gt;&gt; <span class="number">4</span>)</span></span>;  <span class="comment">// 将 overflow_value_ 修改为 overflow_value</span></span><br></pre></td></tr></table></figure></p>
-<h6
-id="类型名重复modernize-use-auto">类型名重复(modernize-use-auto)</h6>
+<h6 id="类型名重复modernize-use-auto">类型名重复(modernize-use-auto)</h6>
 <p>原本使用了显式的类型名<code>std::bitset&lt;BITSET_CAPACITY&gt;</code>,而
 <code>Clang-Tidy</code> 建议使用 <code>auto</code>
 来简化代码,避免显式重复类型名: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> bset = std::<span class="built_in">bitset</span>&lt;BITSET_CAPACITY&gt;(hash);  <span class="comment">// 使用 auto 来推导类型</span></span><br></pre></td></tr></table></figure></p>
