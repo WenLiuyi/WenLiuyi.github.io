@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wenliuyi.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-03-31T02:02:38.000Z">
-<meta property="article:modified_time" content="2025-04-01T03:45:39.419Z">
+<meta property="article:modified_time" content="2025-04-09T10:19:03.143Z">
 <meta property="article:author" content="Liuyi Wen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://wenliuyi.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://wenliuyi.github.io/posts/ca7e7de.html",
   "image": "http://wenliuyi.github.io/img/butterfly-icon.png",
   "datePublished": "2025-03-31T02:02:38.000Z",
-  "dateModified": "2025-04-01T03:45:39.419Z",
+  "dateModified": "2025-04-09T10:19:03.143Z",
   "author": [
     {
       "@type": "Person",
@@ -160,7 +160,7 @@
   pageType: 'post'
 }</script><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">模型并行计算</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">模型并行计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-31T02:02:38.000Z" title="发表于 2025-03-31 10:02:38">2025-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-01T03:45:39.419Z" title="更新于 2025-04-01 11:45:39">2025-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Introduction-to-AI/">Introduction to AI</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Introduction-to-AI/Parallelism/">Parallelism</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>该篇摘自<a target="_blank" rel="noopener" href="https://huggingface.co/spaces/nanotron/ultrascale-playbook">The
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">模型并行计算</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">模型并行计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-31T02:02:38.000Z" title="发表于 2025-03-31 10:02:38">2025-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-09T10:19:03.143Z" title="更新于 2025-04-09 18:19:03">2025-04-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Introduction-to-AI/">Introduction to AI</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Introduction-to-AI/Parallelism/">Parallelism</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>该篇摘自<a target="_blank" rel="noopener" href="https://huggingface.co/spaces/nanotron/ultrascale-playbook">The
 Ultra-Scale Playbook: Training LLMs on GPU Clusters</a>.</p>
 <h2 id="在单个gpu上训练">在单个GPU上训练</h2>
 <p>在单个GPU上训练，通常包括三个步骤： 1. forward
@@ -447,14 +447,240 @@ checkpoints分片（其他activations已被抛弃）</p>
 ZeRO系列</a></p>
 <h3 id="张量并行tensor-parallelism">张量并行（Tensor Parallelism）</h3>
 <h4 id="数学原理">数学原理</h4>
-<figure>
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-20.png" alt="alt text">
-<figcaption aria-hidden="true">alt text</figcaption>
-</figure>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-20.png"></p>
+<p>在神经网络中，矩阵乘法常用以下方式表示：<span class="math inline">\(X\times W\)</span>，其中：</p>
+<ul>
+<li><span class="math inline">\(X\)</span>为activation的输入；</li>
+<li><span class="math inline">\(W\)</span>为<code>nn.Linear</code>的权重。 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-21.png"></li>
+</ul>
+<p>在TP中，tensors将被沿着一个特定维度分为N个shards，并分布在N个GPU上。矩阵可以按行/按列切分，分别对应行并行、列并行。</p>
+<h5 id="column-linear">column-linear</h5>
+<ol type="1">
+<li>运用<strong>broadcast</strong>操作，将输入矩阵复制到每个worker；</li>
+<li>将每个权重矩阵切分为若干个列，分别与输入矩阵相乘，最后通过<strong>all-gather</strong>操作结合。</li>
+</ol>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-22.png"></p>
+<h5 id="row-linear">row-linear</h5>
+<ol type="1">
+<li>运用<strong>scatter</strong>操作，将输入矩阵切分为若干个列；</li>
+<li>将每个权重矩阵切分为若干行，分别与输入矩阵的各列相乘，最后通过<strong>all-reduce</strong>操作相加。</li>
+</ol>
+<h4 id="transformer-block内部的张量并行">Transformer
+Block内部的张量并行</h4>
+<p>一个Transformer由两个主要的block组成：前向反馈层（Feedbackforward
+layers，MLP）和多头注意力层（Multi-Head
+Attention，MHA），可以同时运用TP。</p>
+<h5 id="前向反馈层mlp">前向反馈层（MLP）</h5>
+<p>MLP：先使用column-linear，再使用row-linear（现实训练中不需要broadcast操作，因为可以确保输入已经在TP
+ranks之间同步） &gt;
+比先row-linear后column-linear更快，省去了中间的all-reduce操作。 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-23.png"></p>
+<h5 id="多头注意力层mha">多头注意力层（MHA）</h5>
+<p>将 Q、K 和 V
+矩阵按列并行拆分，输出投影则沿着行维度拆分。在多头注意力的情况下，按列并行的方法有一个非常自然的解释：<strong>每个worker计算单个或一部分head的注意力</strong>。这种方法同样适用于多查询（MQA）或分组查询注意力（GQA），其中，<strong>keys和values在queries之间共享</strong>。
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-24.png"></p>
+<blockquote>
+<p>值得注意的是，<strong>张量并行度（TP degree）不应超过Q/K/V
+头的数量</strong>，因为需要保证每个 TP
+rank的head是完整的（否则无法在每个 GPU
+上独立计算注意力，需要额外的通信操作）。</p>
+<p>如果使用 GQA，TP 幅度应该实际小于 K/V 头的数量。例如，LLaMA-3 8B
+模型有 8 个Key/Value heads，因此TP degree最好不要超过
+8；如果我们为这个模型使用 TP=16，那么我们需要在每个 GPU 上复制 K/V
+头，并确保它们保持同步。</p>
+</blockquote>
+<h4 id="tp性能">TP性能</h4>
+<p>然而，TP也不是万全之策。需要在模型的计算路径中直接添加了多个分布式通信原语，因此这些通信操作很难完全隐藏或与计算重叠（就像在
+ZeRO
+中做的那样）。最终的性能将是计算和内存增益与额外通信开销之间的折中结果。举个例子：</p>
+<p>MLP的操作流程图如下： <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-25.png"> 在每个decoder
+layer的前向传播中，会遇到一个同步点（即all-reduce操作，无法与计算重叠）；该通信开销是必需的，在应用
+LayerNorm 之前，合并tensor-parallel ranks的结果。</p>
+<ul>
+<li>TP优点：TP有助于减少矩阵乘法的activation
+memory，因为过程中间的activations被分片存储在不同的 GPU 上；</li>
+<li>TP缺点：
+<ul>
+<li>需要收集完整的activations以执行类似 LayerNorm
+的操作，这并没有完全利用内存的优势；</li>
+<li>引入大量通信需求，严重依赖于网络基础设施。由于无法完全将这个特定的
+AllReduce 操作与计算重叠，它直接延长了前向传播的关键路径。</li>
+</ul></li>
+</ul>
+<p>下图展示分布式训练中，计算效率和内存可用性之间的trade-off：<strong>随着TP
+degree增加，虽然每个GPU的吞吐量减少（左图），但它能够处理更大的批量大小（右图）。</strong>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-26.png"> &gt; 实际上，正如左图所示：TP的通信开销在超越
+<strong>8 个 GPU</strong>
+时变得尤为显著：虽然在单节点内使用TP时，可以利用快速的 NVLink
+互连，但跨节点通信则依赖于较慢的网络连接；当从 TP=8 增加到 TP=16
+时，性能有显著下降；而从 TP=16 增加到 TP=32
+时，下降更加明显。在更高的并行度下，通信开销变得如此之高，以至于它迅速主导了计算时间。</p>
+<h5 id="b大模型的内存使用量">70B大模型的内存使用量</h5>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-27.png"></p>
+<p>是否有办法从TP中获得更多的好处呢？可以看到看到，层归一化（Layer
+Normalization）和Dropout仍然需要在每个 GPU
+上收集完整的激活值，这在一定程度上抵消了内存节省。可以通过寻找方法将这些剩余操作也并行化，从而做得更好。</p>
+<blockquote>
+<ul>
+<li>TP中的层归一化：由于每个 TP rank 在 all-gather
+之后看到的是相同的激活值，因此层归一化的权重实际上不需要 all-reduce
+来同步它们的梯度。在反向传播之后，它们自然会在各个 rank
+上保持同步；</li>
+<li>TP中的Dropout：必须确保跨 TP rank
+同步随机种子，以保持行为的确定性。</li>
+</ul>
+</blockquote>
+<h4 id="一个小扩展序列并行sequence-parallelism">一个小扩展：序列并行（Sequence
+Parallelism）</h4>
+<p>SP切分TP未处理的activations和computations（例如：<strong>LayerNorm和Dropout</strong>），但是沿着input
+sequence的维度（不是跨隐藏层的维度）。</p>
+<p>上述操作<strong>需要访问完整的隐藏维度</strong>才能正确计算。例如：LayerNorm需要完整的隐藏维度，以计算均值和方差：
+<span class="math display">\[
+LayerNorm(x)=\gamma\cdot\frac{x-\mu}{\sqrt(\sigma^{2}+\epsilon)}+\beta
+\]</span> 其中，<span class="math inline">\(\mu=mean(x)\)</span>，<span class="math inline">\(\sigma^{2}=var(x)\)</span>是沿着隐藏层<span class="math inline">\(h\)</span>计算的。</p>
+<p>尽管这些操作在计算上比较简单，但它们仍然需要大量的激活内存，因为它们需要完整的隐藏维度。SP允许我们沿着sequence维度拆分，来将这一内存负担分摊到多个GPU上。</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-28.png"> * 前向传播： * "f"
+是一个无操作（no-op），因为activations已经在不同的rank之间进行了复制； *
+"f*" 是一次全归约（all-reduce），用于同步activations，并确保正确性。</p>
+<ul>
+<li>反向传播：
+<ul>
+<li>"f*"
+是一个无操作（no-op），因为gradient已经在不同的rank之间进行了复制；</li>
+<li>"f" 是一次全归约（all-reduce），用于同步gradient。</li>
+</ul></li>
+</ul>
+<p>这些操作“f”和“f*”被称为共轭对，因为它们是互补的——在前向传播中，当一个是no-op时，另一个在反向传播中是all-reduce，反之亦然。
+&gt; 在SP中，避免使用all-reduce（需要收集完整的激活值）</p>
+<p>事实上发生了什么呢？ * <strong>初始层归一化（SP区域）</strong> *
+输入张量 X1 和 X2（形状为 b, s/2,
+h）进入LayerNorm，已经沿sequence维度进行拆分
+每个GPU独立计算它们各自序列块的LayerNorm，得到 Y1 和 Y2； *
+<strong>第一次转换（SP → TP）</strong> * “g”操作（all-gather）将 Y1 和
+Y2 合并回完整的序列长度 恢复 Y（形状为 b, s, h） *
+<strong>第一次线性变换（TP区域）</strong> * A1层
+是column-linear，所以它沿隐藏维度拆分 Y；GeLU
+激活函数在每个GPU上独立应用 Z1，形状为 (b, s, h/2) *
+<strong>第二次线性变换（TP区域）</strong> * B1层
+是row-linear，它恢复隐藏维度 W1 形状为 (b, s, h) * <strong>最后转换（TP
+→ SP）</strong> *
+“g*”操作（reduce-scatter），在前一个row-linear层的进行dropout，同时在sequence维度上进行分散；W1形状为
+(b, s/2, h)</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-29.png"></p>
+<p>SP：的一大优势是：它减小了需要存储的最大的activation
+size。在仅使用TP时，需要在不同的点存储形状为（b, s,
+h）的activations。然而，使用SP后，最大的activation size减小到<span class="math inline">\(\frac{b\cdot s\cdot h}{tp}\)</span>（<span class="math inline">\(tp\)</span>是分割数），因为总是沿着序列维度或隐藏维度进行拆分。</p>
+<p>以下表格描述：前向传播过程中，activations shape随着隐藏维度<span class="math inline">\(h\)</span>和序列维度<span class="math inline">\(s\)</span>的变化： | Region | TP only | TP with SP
+|
+|---------------------------|--------------------------------------------------|-------------------------------------------------|
+| Enter TP (Column Linear) | h: sharded (weight_out is sharded) | h:
+sharded (weight_out is sharded) <br> s: <strong>all-gather</strong> to
+full | | TP Region | h: sharded <br> s: full | h: sharded <br> s: full |
+| Exit TP (Row Linear) | h: full (weight_out is full + all-reduce for
+correctness) <br> s: full | h: full (weight_out is full +
+<strong>reduce-scatter</strong> for correctness) <br> s:
+<strong>reduce-scatter</strong> to sharded | | SP Region | h: full <br>
+s: full | h: full <br> s: sharded |</p>
+<p>对于嵌入层： | Region | Vanilla TP | TP with SP |
+|---------------------------------------|--------------------------------------------------|-------------------------------------------------|
+| Embedding Layer (Row Linear sharded on vocab) | h: full (weight_out is
+full + <strong>all-reduce</strong> for correctness) <br> s: full | h:
+full (weight_out is full + <strong>reduce-scatter</strong> for
+correctness) <br> s: <strong>reduce-scatter</strong> to sharded |</p>
+<h5 id="b大模型的内存使用量-1">70B大模型的内存使用量</h5>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-30.png"></p>
+<p>如上图，通过TP/SP=16，使得处理16k tokens成为可能。</p>
+<blockquote>
+<p>使用TP+SP是否会比传统的TP引入更多的通信开销？是和否都有可能。</p>
+<p>在传统TP的前向传播过程中，每个Transformer块中有两个all-reduce操作；而在SP中，每个Transformer块中有两个all-gather和两个reduce-scatter操作。因此，SP的通信操作数量是TP的两倍。但由于all-reduce操作可以分解为all-gather
++
+reduce-scatter。因此它们在通信开销上是等效的。同样的推理适用于反向传播，因为我们只需使用每个操作的共轭（no-op
+↔︎ all-reduce，all-gather ↔︎ reduce-scatter）。</p>
+</blockquote>
+<p>在每个layer中，讨论了4个通信操作（2个用于Attention，2个用于MLP）。以下为TP+SP时，MLP的性能分析情况：
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-31.png"></p>
+<p>和TP相似，TP+SP难以与计算重叠，这使得吞吐量在很大程度上依赖于通信带宽。在这一点上，和传统TP一样，TP+SP通常只在单个节点内执行（将TP
+degree保持在每个节点的GPU数量之下，例如TP≤8）。</p>
+<h5 id="tpsp性能">TP+SP性能</h5>
+<p>以下为使用TP+SP扩展时，对于一个3B模型和4096序列长度，吞吐量和内存利用率的变化：
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-32.png">
+再次观察到，计算效率（左图）和内存容量（右图）之间的trade-off。虽然较高的并行度通过减少activations的内存，能够处理<strong>更大的批次大小</strong>；但它们也<strong>降低了每个GPU的吞吐量</strong>，特别是当并行度超过节点内GPU数量的阈值时。</p>
+<p>总结观察结果： *
+对于这两种方法，在<strong>从TP=8到TP=16时，性能出现最大降幅</strong>：因为这是我们从仅在单个节点（NVLink）内进行通信，转变为跨节点通信（EFA）的时刻；
+* 使用TP+SP时，相较于TP，帮助处理<strong>更大的批次</strong>；</p>
+<p>TP通过沿着<strong>隐藏维度</strong>拆分注意力和前馈操作，将activations分布在多个GPU上；而SP沿着<strong>序列维度</strong>拆分剩余的操作，进一步提高了activations的并行程度。</p>
+<blockquote>
+<p>由于SP区域中的LayerNorm操作在不同的序列部分上进行，因此它们的梯度会在不同TP
+ranks之间有所不同。为了确保权重保持同步，我们需要在反向传播过程中，对它们的梯度进行all-reduce操作，类似于数据并行（DP）确保权重同步。然而，这只是一个小的通信开销，因为LayerNorm的参数相对较少。</p>
+</blockquote>
+<p>然而，TP和SP也有两个限制： 1.
+如果扩展序列长度，TP区域的activations内存仍然会膨胀； 2.
+如果模型太大，无法适应TP=8，那么由于节点间连接的瓶颈，将出现巨大的性能下降。</p>
+<p>我们可以通过上下文并行（Context
+Parallelism）来解决问题1），通过流水线并行（Pipeline
+Parallelism）来解决问题2）。接下来，先来看看上下文并行！</p>
+<h3 id="上下文并行context-parallelism解决长序列的activations爆炸">上下文并行（Context
+Parallelism）：解决长序列的activations爆炸</h3>
+<p>通过张量并行（Tensor Parallelism）和序列并行（Sequence
+Parallelism），我们可以显著减少每个GPU的内存需求，因为模型的weights和activations被分布到多个GPU上。然而，当我们训练更长的序列时（例如，当序列长度扩展到128k或更多tokens时），仍然可能超出单个节点的内存容量，因为在TP区域内，我们仍然需要处理完整的序列长度。</p>
+<p>此外，即使我们完全重新计算activations（带来大约30%的计算开销），仍然需要在layer
+boundaries处保留一些activations，其内存需求也会随着序列长度的增加而线性增长。接下来，看看CP如何帮助我们解决这个问题：</p>
+<p>SP沿着序列维度拆分输入；但现在，将<strong>这种拆分应用到整个模型</strong>，而不是仅仅应用于模型中的SP区域。</p>
+<p><strong>拆分序列</strong>不会影响大多数模块，如MLP和LayerNorm（每个token都是独立处理的）。它也不需要像TP那样的昂贵通信（因为仅拆分输入，而不是权重矩阵）。就像DP一样，在计算梯度后，会<strong>启动一个all-reduce操作，来同步CP组中的梯度</strong>。</p>
+<p>然而，一个重要的例外是：<strong>注意力模块</strong>。在注意力模块中，<strong>每个token需要访问所有其他序列token的键/值对</strong>（即使在causal
+attention中，也至少需要关注之前的所有token）；因此，注意力模块需要在GPU之间进行完全通信，以交换必要的keys/values。</p>
+<p>这个想法是intuitively
+expensive的。现在引入一个高效的key/value通信机制：<strong>Ring
+Attention</strong>。</p>
+<h4 id="ring-attention">Ring attention</h4>
+<p>首先，每个GPU启动一个异步通信操作，将其key/value
+pair发送至其他GPU；在等待其他GPU数据时，计算已存储在内存中数据的注意力分数。理想情况下，在计算完成之前，从另一个GPU接收到下一个key/value
+pair，这样GPU就可以在完成第一轮计算后，立即开始下一轮计算。（等待与计算重叠）。</p>
+<p>假设当前有4个GPU和一个4个token的输入。最初，输入序列沿着序列维度均匀拆分，因此每个GPU将只拥有一个token及其对应的Q/K/V值。假设Q1、K1和V1表示第一个token的query、key和value，这些数据位于第一个GPU上。注意力计算需要4个step才能完成。在每个step内，每个GPU执行以下三个连续操作：
+1. 将当前key/value以非阻塞的方式发送到下一个机器（除了在最后一个step）；
+2. 本地计算注意力分数：运用当前的key/value值： <span class="math display">\[
+softmax(\frac{QK^{T}}{\sqrt{d}})*V
+\]</span> 3.
+等待接收来自前一个GPU的key/value；返回第1步，更新当前的key/value为：刚从前一个GPU接收到的key/value。
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-33.png"></p>
+<p>然而，Ring Attention的简单实现，会导致一个问题：由causal
+attention矩阵形状引起的<strong>GPU负载不均</strong>。来看看casual
+attention mask的计算： <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-34.png">
+<strong>SoftMax是按行计算</strong>的，这说明：<strong>每当一个GPU接收到某行的所有token时，它就可以开始计算</strong>。可以看到，GPU1可以立即计算它，因为它从token
+1到token
+4开始，且GPU1实际上不需要从其他GPU接收任何信息；然而，GPU2需要等待第二轮，才能接收到token
+1-4，从而拥有token
+1-8的所有值。此外，GPU1似乎执行的工作远少于其他所有GPU。</p>
+<p>用什么方式平衡GPU负载呢？</p>
+<h5 id="zig-zag-ring-attention">Zig-Zag Ring Attention</h5>
+<p>我们需要更好的方法来分配输入序列。这可以通过不完全按顺序将token分配给GPU，而是<strong>稍微混合一下顺序，使得每个GPU都有早期和晚期的token</strong>。这个方法被称为Zig-Zag
+Attention，在这种新的安排中，attention
+mask将展现更均匀的计算分布，（数一数被标记的方块，发现计算已经在所有GPU之间平衡分配）</p>
+<p>同时看到，为了完成所有行，每个GPU都需要从其他GPU获取信息。</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-35.png"></p>
+<p>有两种常见方式来使计算和通信重叠，分别是： 1.
+执行一般的all-gather，将每个GPU上的所有同时KV重新收集（类似Zero-3）； 2.
+按需将每个GPU上的key/value pair，逐个从一个GPU收集到另一个GPU。 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/ca7e7de/image-36.png"></p>
+<ul>
+<li>all-gather实现：所有GPU同时收集来自其他所有GPU的完整KV对
+<ul>
+<li>需要更多的临时内存，因为每个GPU必须同时存储完整的KV对；</li>
+<li>通信一次性完成，但内存开销较大。</li>
+</ul></li>
+<li>All-to-All（Ring）实现：GPU以类似环形的模式交换KV对，一次交换一块
+<ul>
+<li>更节省内存，因为每个GPU只需要临时存储一块额外的KV对；</li>
+<li>通信被分散，与计算重叠</li>
+</ul></li>
+</ul>
+<p>TP在跨节点时扩展性不好，如果模型权重无法轻松放入一个节点该怎么办呢？接下来，进入另一种并行方式：Pipeline
+Parallelism（流水线并行），来解决这个问题！</p>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://wenliuyi.github.io">Liuyi Wen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://wenliuyi.github.io/posts/ca7e7de.html">http://wenliuyi.github.io/posts/ca7e7de.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://wenliuyi.github.io" target="_blank">Liuyi Wen's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/44ad5109.html" title="C++泛型算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">C++泛型算法</div></div><div class="info-2"><div class="info-item-1">本篇隶属C++ Primer中C++标准库专题，当前关注范型算法。 标准库容器只定义了很少的操作；因此提供了一组范型算法，其中大多数独立于特定的容器，具备通用性。 范型算法 概述 大多数算法在头文件algorithm中；头文件numeric中定义了一组数值范型算法。 范型算法本身不会执行容器的操作；只会运行于迭代器之上，执行迭代器的操作。 只读算法 只读取输入范围的元素，从不改变元素 find 12int val=42;auto result=find(vec.cbegin(), vec.cend(), val);  find前两个参数：表示元素范围的迭代器；第三个参数：一个值。将范围中每个元素与给定值比较：  返回指向第一个等于给定值元素的迭代器； 若范围内无匹配元素，返回第二个参数，表示搜索失败。   accumulate 1int sum=accumulate(vec.cbegin(), vec.cend(), 0);	//...</div></div></div></a><a class="pagination-related" href="/posts/a9bcb957.html" title="BUAA-OS Lab3 实验笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">BUAA-OS Lab3 实验笔记</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Liuyi Wen</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WenLiuyi"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%8D%95%E4%B8%AAgpu%E4%B8%8A%E8%AE%AD%E7%BB%83"><span class="toc-number">1.</span> <span class="toc-text">在单个GPU上训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#batch-size%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">1.1.</span> <span class="toc-text">batch size的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#transformer%E4%B8%8A%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">Transformer上的内存使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#weightsgradsoptimizer-state%E7%9A%84%E5%86%85%E5%AD%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">weights&#x2F;grads&#x2F;optimizer
 state的内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#activations%E7%9A%84%E5%86%85%E5%AD%98"><span class="toc-number">1.2.2.</span> <span class="toc-text">activations的内存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6activation%E5%A2%9E%E9%95%BF%E7%9A%84%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.</span> <span class="toc-text">控制activation增长的策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#activation%E9%87%8D%E8%AE%A1%E7%AE%97gradient-checkpoints"><span class="toc-number">1.3.1.</span> <span class="toc-text">activation重计算（gradient
 checkpoints）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E7%B4%AF%E7%A7%AFgradient-accumulation"><span class="toc-number">1.3.2.</span> <span class="toc-text">梯度累积（gradient
-accumulation）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-number">2.</span> <span class="toc-text">并行策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8Cdata-parallelism"><span class="toc-number">2.1.</span> <span class="toc-text">数据并行（Data Parallelism）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">优化策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%B8%80%E6%A2%AF%E5%BA%A6%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97%E5%B9%B6%E8%A1%8C"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">优化一：梯度同步（通信）与反向传播（计算）并行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%BA%8C%E6%A2%AF%E5%BA%A6%E5%88%86%E6%A1%B6"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">优化二：梯度分桶</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%B8%89%E9%85%8D%E5%90%88%E6%A2%AF%E5%BA%A6%E7%B4%AF%E7%A7%AF"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">优化三：配合梯度累积</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dp%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">DP步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#deepspeed-zero%E9%9B%B6%E5%86%97%E4%BD%99%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-number">2.1.3.</span> <span class="toc-text">DeepSpeed ZeRO（零冗余优化器）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#zero-1zero-2zero-3%E9%80%9A%E4%BF%A1%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">ZeRO-1，ZeRO-2，ZeRO-3通信量分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zero-r"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">ZeRO-R</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zero-offload"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">ZeRO-Offload</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8Ctensor-parallelism"><span class="toc-number">2.2.</span> <span class="toc-text">张量并行（Tensor Parallelism）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.1.</span> <span class="toc-text">数学原理</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/abf55f5c.html" title="《算法导论》笔记">《算法导论》笔记</a><time datetime="2025-04-07T11:25:55.000Z" title="发表于 2025-04-07 19:25:55">2025-04-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/8b715a29.html" title="纸翼传问平台：平台功能、CICD、降级服务、自动扩缩容展示">纸翼传问平台：平台功能、CICD、降级服务、自动扩缩容展示</a><time datetime="2025-04-07T11:08:28.000Z" title="发表于 2025-04-07 19:08:28">2025-04-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/39315f07.html" title="纸翼学术成果分享平台：平台展示">纸翼学术成果分享平台：平台展示</a><time datetime="2025-04-07T10:43:54.000Z" title="发表于 2025-04-07 18:43:54">2025-04-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/a9bcb957.html" title="BUAA-OS Lab3 实验笔记">BUAA-OS Lab3 实验笔记</a><time datetime="2025-04-02T11:51:11.000Z" title="发表于 2025-04-02 19:51:11">2025-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ca7e7de.html" title="模型并行计算">模型并行计算</a><time datetime="2025-03-31T02:02:38.000Z" title="发表于 2025-03-31 10:02:38">2025-03-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Liuyi Wen</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+accumulation）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-number">2.</span> <span class="toc-text">并行策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8Cdata-parallelism"><span class="toc-number">2.1.</span> <span class="toc-text">数据并行（Data Parallelism）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">优化策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%B8%80%E6%A2%AF%E5%BA%A6%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97%E5%B9%B6%E8%A1%8C"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">优化一：梯度同步（通信）与反向传播（计算）并行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%BA%8C%E6%A2%AF%E5%BA%A6%E5%88%86%E6%A1%B6"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">优化二：梯度分桶</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E4%B8%89%E9%85%8D%E5%90%88%E6%A2%AF%E5%BA%A6%E7%B4%AF%E7%A7%AF"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">优化三：配合梯度累积</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dp%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">DP步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#deepspeed-zero%E9%9B%B6%E5%86%97%E4%BD%99%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-number">2.1.3.</span> <span class="toc-text">DeepSpeed ZeRO（零冗余优化器）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#zero-1zero-2zero-3%E9%80%9A%E4%BF%A1%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">ZeRO-1，ZeRO-2，ZeRO-3通信量分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zero-r"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">ZeRO-R</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zero-offload"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">ZeRO-Offload</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8Ctensor-parallelism"><span class="toc-number">2.2.</span> <span class="toc-text">张量并行（Tensor Parallelism）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.1.</span> <span class="toc-text">数学原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#column-linear"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">column-linear</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#row-linear"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">row-linear</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transformer-block%E5%86%85%E9%83%A8%E7%9A%84%E5%BC%A0%E9%87%8F%E5%B9%B6%E8%A1%8C"><span class="toc-number">2.2.2.</span> <span class="toc-text">Transformer
+Block内部的张量并行</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E5%90%91%E5%8F%8D%E9%A6%88%E5%B1%82mlp"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">前向反馈层（MLP）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%B1%82mha"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">多头注意力层（MHA）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tp%E6%80%A7%E8%83%BD"><span class="toc-number">2.2.3.</span> <span class="toc-text">TP性能</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#b%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">70B大模型的内存使用量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%89%A9%E5%B1%95%E5%BA%8F%E5%88%97%E5%B9%B6%E8%A1%8Csequence-parallelism"><span class="toc-number">2.2.4.</span> <span class="toc-text">一个小扩展：序列并行（Sequence
+Parallelism）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#b%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F-1"><span class="toc-number">2.2.4.1.</span> <span class="toc-text">70B大模型的内存使用量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tpsp%E6%80%A7%E8%83%BD"><span class="toc-number">2.2.4.2.</span> <span class="toc-text">TP+SP性能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B6%E8%A1%8Ccontext-parallelism%E8%A7%A3%E5%86%B3%E9%95%BF%E5%BA%8F%E5%88%97%E7%9A%84activations%E7%88%86%E7%82%B8"><span class="toc-number">2.3.</span> <span class="toc-text">上下文并行（Context
+Parallelism）：解决长序列的activations爆炸</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ring-attention"><span class="toc-number">2.3.1.</span> <span class="toc-text">Ring attention</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#zig-zag-ring-attention"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">Zig-Zag Ring Attention</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/abf55f5c.html" title="《算法导论》笔记">《算法导论》笔记</a><time datetime="2025-04-07T11:25:55.000Z" title="发表于 2025-04-07 19:25:55">2025-04-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/8b715a29.html" title="纸翼传问平台：平台功能、CICD、降级服务、自动扩缩容展示">纸翼传问平台：平台功能、CICD、降级服务、自动扩缩容展示</a><time datetime="2025-04-07T11:08:28.000Z" title="发表于 2025-04-07 19:08:28">2025-04-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/39315f07.html" title="纸翼学术成果分享平台：平台展示">纸翼学术成果分享平台：平台展示</a><time datetime="2025-04-07T10:43:54.000Z" title="发表于 2025-04-07 18:43:54">2025-04-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/a9bcb957.html" title="BUAA-OS Lab3 实验笔记">BUAA-OS Lab3 实验笔记</a><time datetime="2025-04-02T11:51:11.000Z" title="发表于 2025-04-02 19:51:11">2025-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ca7e7de.html" title="模型并行计算">模型并行计算</a><time datetime="2025-03-31T02:02:38.000Z" title="发表于 2025-03-31 10:02:38">2025-03-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Liuyi Wen</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
