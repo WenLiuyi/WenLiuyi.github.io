@@ -218,13 +218,6 @@
 
   
   <url>
-    <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
-    <lastmod>2025-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/tags/C/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -233,6 +226,13 @@
   
   <url>
     <loc>http://wenliuyi.github.io/tags/OOP/</loc>
+    <lastmod>2025-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -248,13 +248,6 @@
 
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Algorithms/</loc>
-    <lastmod>2025-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/categories/C-Primer/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -262,7 +255,14 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Database/</loc>
+    <loc>http://wenliuyi.github.io/categories/Algorithms/</loc>
+    <lastmod>2025-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/C-Primer/Class-Design-Techniques/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -276,7 +276,7 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/C-Primer/Class-Design-Techniques/</loc>
+    <loc>http://wenliuyi.github.io/categories/Database/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -304,14 +304,14 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/OS/BUAA-OS-lab/</loc>
+    <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/Parallelism/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/Parallelism/</loc>
+    <loc>http://wenliuyi.github.io/categories/OS/BUAA-OS-lab/</loc>
     <lastmod>2025-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
