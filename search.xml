@@ -8,7 +8,7 @@
       <link href="/posts/27b7154a.html"/>
       <url>/posts/27b7154a.html</url>
       
-        <content type="html"><![CDATA[<h2 id="系统演示">系统演示</h2><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"video":{"url":"/posts/undefined/1.mp4","pic":"1.png"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+        <content type="html"><![CDATA[<h2 id="系统演示">系统演示</h2><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"video":{"url":"/posts/27b7154a/1.mp4","pic":"1.png"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       
       
       
