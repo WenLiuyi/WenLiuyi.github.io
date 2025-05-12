@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CMU15-445 Lecture#06 缓存池 | Liuyi Wen's Blog</title><meta name="author" content="Liuyi Wen"><meta name="copyright" content="Liuyi Wen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在冯诺依曼架构中，数据存储在磁盘上，但必须加载到内存中才能执行操作。因此，如果数据库管理系统希望处理大量数据，它就必须能够高效地在磁盘与内存之间移动数据。这个任务由缓冲池管理器（Buffer Pool Manager）完成。从高层来看，主要实现以下功能： 1. 将物理页（Physical Pages）在内存的缓冲区与持久存储之间来回移动； 2. 作为一个缓存（Cache）使用，将常用页面保">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CMU15-445 Lecture#06 缓存池 | Liuyi Wen's Blog</title><meta name="author" content="Liuyi Wen"><meta name="copyright" content="Liuyi Wen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在冯诺依曼架构中，数据存储在磁盘上，但必须加载到内存中才能执行操作。因此，如果数据库管理系统希望处理大量数据，它就必须能够高效地在磁盘与内存之间移动数据。这个任务由缓冲池管理器（Buffer Pool Manager）完成。从高层来看，主要实现以下功能：  将物理页（Physical Pages）在内存的缓冲区与持久存储之间来回移动； 作为一个缓存（Cache）使用，将常用页面保留在内存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU15-445 Lecture#06 缓存池">
 <meta property="og:url" content="http://wenliuyi.github.io/posts/7f49fcfe.html">
 <meta property="og:site_name" content="Liuyi Wen&#39;s Blog">
-<meta property="og:description" content="在冯诺依曼架构中，数据存储在磁盘上，但必须加载到内存中才能执行操作。因此，如果数据库管理系统希望处理大量数据，它就必须能够高效地在磁盘与内存之间移动数据。这个任务由缓冲池管理器（Buffer Pool Manager）完成。从高层来看，主要实现以下功能： 1. 将物理页（Physical Pages）在内存的缓冲区与持久存储之间来回移动； 2. 作为一个缓存（Cache）使用，将常用页面保">
+<meta property="og:description" content="在冯诺依曼架构中，数据存储在磁盘上，但必须加载到内存中才能执行操作。因此，如果数据库管理系统希望处理大量数据，它就必须能够高效地在磁盘与内存之间移动数据。这个任务由缓冲池管理器（Buffer Pool Manager）完成。从高层来看，主要实现以下功能：  将物理页（Physical Pages）在内存的缓冲区与持久存储之间来回移动； 作为一个缓存（Cache）使用，将常用页面保留在内存">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wenliuyi.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-03-25T07:38:18.000Z">
-<meta property="article:modified_time" content="2025-05-07T10:00:57.077Z">
+<meta property="article:modified_time" content="2025-05-07T10:12:20.377Z">
 <meta property="article:author" content="Liuyi Wen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://wenliuyi.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://wenliuyi.github.io/posts/7f49fcfe.html",
   "image": "http://wenliuyi.github.io/img/butterfly-icon.png",
   "datePublished": "2025-03-25T07:38:18.000Z",
-  "dateModified": "2025-05-07T10:00:57.077Z",
+  "dateModified": "2025-05-07T10:12:20.377Z",
   "author": [
     {
       "@type": "Person",
@@ -160,15 +160,18 @@
   pageType: 'post'
 }</script><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">CMU15-445 Lecture#06 缓存池</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">CMU15-445 Lecture#06 缓存池</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-25T07:38:18.000Z" title="发表于 2025-03-25 15:38:18">2025-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-07T10:00:57.077Z" title="更新于 2025-05-07 18:00:57">2025-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Database/">Database</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Database/CMU-14-445/">CMU 14-445</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>在冯诺依曼架构中，数据存储在磁盘上，但必须<strong>加载到内存</strong>中才能执行操作。因此，如果数据库管理系统希望处理大量数据，它就必须能够<strong>高效地在磁盘与内存之间移动数据</strong>。这个任务由<strong>缓冲池管理器（Buffer
-Pool Manager）</strong>完成。从高层来看，主要实现以下功能： 1.
-将<strong>物理页（Physical
-Pages）</strong>在内存的缓冲区与持久存储之间来回移动； 2.
-作为一个<strong>缓存（Cache）</strong>使用，将常用页面保留在内存中以便更快访问，而将不常用或冷却的页面逐出到磁盘上。</p>
-<p>从时间、空间两个角度看待： 1.
-<strong>空间上</strong>：应该将pages写入磁盘的哪个位置。目标是使得常被访问的页面，存储在相近的位置（空间局部性）
-2.
-<strong>时间上</strong>：何时将pages从磁盘读入内存；何时将内存中的pages写回磁盘。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Liuyi Wen's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">CMU15-445 Lecture#06 缓存池</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">CMU15-445 Lecture#06 缓存池</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-25T07:38:18.000Z" title="发表于 2025-03-25 15:38:18">2025-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-07T10:12:20.377Z" title="更新于 2025-05-07 18:12:20">2025-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Database/">Database</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Database/CMU-14-445/">CMU 14-445</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>在冯诺依曼架构中，数据存储在磁盘上，但必须<strong>加载到内存</strong>中才能执行操作。因此，如果数据库管理系统希望处理大量数据，它就必须能够<strong>高效地在磁盘与内存之间移动数据</strong>。这个任务由<strong>缓冲池管理器（Buffer
+Pool Manager）</strong>完成。从高层来看，主要实现以下功能：</p>
+<ol type="1">
+<li>将<strong>物理页（Physical
+Pages）</strong>在内存的缓冲区与持久存储之间来回移动；</li>
+<li>作为一个<strong>缓存（Cache）</strong>使用，将常用页面保留在内存中以便更快访问，而将不常用或冷却的页面逐出到磁盘上。</li>
+</ol>
+<p>从时间、空间两个角度看待：</p>
+<ol type="1">
+<li><strong>空间上</strong>：应该将pages写入磁盘的哪个位置。目标是使得常被访问的页面，存储在相近的位置（空间局部性）</li>
+<li><strong>时间上</strong>：何时将pages从磁盘读入内存；何时将内存中的pages写回磁盘。</li>
+</ol>
 <p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/posts/7f49fcfe/image-19.png"></p>
 <h2 id="缓冲池管理">缓冲池管理</h2>
 <p>缓冲池（Buffer
@@ -189,51 +192,55 @@ id映射到数据库文件中的具体位置。（所有对页面目录的更改
 <p><strong>Page
 Table（页表）</strong>:一个位于<strong>内存中的哈希表</strong>，用于追踪当前已加载到内存中的pages。它将<strong>page
 ID映射到缓冲池中的frame位置</strong>。（由于缓冲池中pages的排列顺序不一定与磁盘上的顺序一致，因此这个额外的间接映射层使得系统能够正确定位页面在内存中的位置。）我们<strong>通过页表和page
-id查看请求的page是否在缓存池中</strong>。另外，页表还为每个page维护了以下元信息：
-* <strong>脏标志（Dirty
-Flag）</strong>：每当一个线程<strong>修改page内容时，就会设置</strong>这个标志。这表示该<strong>page在被驱逐出缓冲池之前，必须先写回磁盘</strong>。
-* <strong>固定/引用计数器（Pin/Reference
+id查看请求的page是否在缓存池中</strong>。另外，页表还为每个page维护了以下元信息：</p>
+<ul>
+<li><strong>脏标志（Dirty
+Flag）</strong>：每当一个线程<strong>修改page内容时，就会设置</strong>这个标志。这表示该<strong>page在被驱逐出缓冲池之前，必须先写回磁盘</strong>。</li>
+<li><strong>固定/引用计数器（Pin/Reference
 Counter）</strong>：记录<strong>当前正在访问该页面的线程数</strong>（无论是读取还是修改）。每个线程在访问page之前，必须先将该计数器加一。如果某个page的“pin
 count”大于
-0，说明它<strong>正在被使用，那么缓冲池管理器不允许将该page驱逐出内存</strong>。（固定某个page，不会阻止其他事务同时访问它，即允许并发访问）</p>
+0，说明它<strong>正在被使用，那么缓冲池管理器不允许将该page驱逐出内存</strong>。（固定某个page，不会阻止其他事务同时访问它，即允许并发访问）</li>
+</ul>
 <p>如果缓冲池已满，且不存在未被固定的页面用于替换，则系统抛出<strong>OOM</strong>错误。</p>
 <h3 id="页目录-页表">页目录 &amp; 页表</h3>
 <p>页目录（Page
-Directory）：将<strong>页面ID</strong>映射到<strong>数据库文件中实际位置</strong>的映射关系。
-*
-所有对页目录的更改都必须写入磁盘，因为页目录需要告诉执行引擎数据在哪个page的slot，因此必须持久化，以确保数据库在重启后仍然能找到页面的位置。</p>
+Directory）：将<strong>页面ID</strong>映射到<strong>数据库文件中实际位置</strong>的映射关系。</p>
+<ul>
+<li>所有对页目录的更改都必须写入磁盘，因为页目录需要告诉执行引擎数据在哪个page的slot，因此必须持久化，以确保数据库在重启后仍然能找到页面的位置。</li>
+</ul>
 <p>页面表（Page
-Table）：将<strong>页面ID</strong>映射到<strong>缓冲池中页面副本所在frame的位置</strong>的映射关系。
-*
-这是一个仅存在于内存中的哈希表，不需要持久化存储在磁盘上（丢失了重建一个就好）</p>
+Table）：将<strong>页面ID</strong>映射到<strong>缓冲池中页面副本所在frame的位置</strong>的映射关系。</p>
+<ul>
+<li>这是一个仅存在于内存中的哈希表，不需要持久化存储在磁盘上（丢失了重建一个就好）</li>
+</ul>
 <p>简而言之：页目录是磁盘上的真实位置索引，持久化保存；页表是内存中的缓冲池映射表，临时使用。</p>
 <h2 id="os-dbms">OS &amp; DBMS</h2>
 <h3 id="locks-vs-latches">Locks vs Latches</h3>
-<p><strong>Locks</strong>：<strong>更高级的逻辑原语</strong> *
-用于保护数据库中的逻辑内容，如元组（tuple）、表（table）、整个数据库等，防止其他事务并发访问或修改；
-* 锁的持有时间是<strong>整个事务的持续时间</strong>； *
-<strong>锁的存在对用户是可见的</strong>，例如运行查询时，数据库系统可以告诉你当前持有哪些锁；
-*
-因为事务可能会失败或被回滚，所以需要<strong>支持回滚更改</strong>。</p>
-<p><strong>Latches</strong>：<strong>底层的保护原语<em>（可使用自旋锁）</em>
-*
-是一种</strong>底层的保护机制<strong>，用于</strong>保护数据库内部数据结构的关键区域<strong>，如哈希表、内存区域等，防止多个线程同时修改造成破坏。
-* 用于保护数据库内部数据结构中的关键代码段，防止其他线程并发修改； *
-生命周期</strong>只持续到该操作完成<strong>，不需要长时间持有； *
-因为只保护内部状态，不涉及逻辑数据变更，</strong>不需要支持回滚**。</p>
+<p><strong>Locks</strong>：<strong>更高级的逻辑原语</strong></p>
+<ul>
+<li>用于保护数据库中的逻辑内容，如元组（tuple）、表（table）、整个数据库等，防止其他事务并发访问或修改；</li>
+<li>锁的持有时间是<strong>整个事务的持续时间</strong>；</li>
+<li><strong>锁的存在对用户是可见的</strong>，例如运行查询时，数据库系统可以告诉你当前持有哪些锁；</li>
+<li>因为事务可能会失败或被回滚，所以需要<strong>支持回滚更改</strong>。</li>
+</ul>
+<p><strong>Latches</strong>：<strong>底层的保护原语</strong>（可使用自旋锁）</p>
+<ul>
+<li>是一种<strong>底层的保护机制</strong>，用于<strong>保护数据库内部数据结构的关键区域</strong>，如哈希表、内存区域等，防止多个线程同时修改造成破坏。</li>
+<li>用于保护数据库内部数据结构中的关键代码段，防止其他线程并发修改；</li>
+<li>生命周期<strong>只持续到该操作完成</strong>，不需要长时间持有；</li>
+<li>因为只保护内部状态，不涉及逻辑数据变更，<strong>不需要支持回滚</strong>。</li>
+</ul>
 <h2 id="为什么不使用os">为什么不使用OS？</h2>
 <p>为什么不直接用 OS的页缓存（比如 mmap）来管理DBMS中的pages呢？</p>
 <p>虽然 mmap 等系统调用能将文件直接映射到内存中，让 OS
-负责页面的加载/驱逐，但对于追求高性能与强事务一致性的数据库来说，存在以下严重问题：
-1.
-<strong>事务安全性差</strong>：OS可能随时将脏页刷新到磁盘，打破事务的原子性和一致性；
-2.
-<strong>I/O延迟不可控</strong>：如果采用OS，那么DBMS无从得知哪些pages已经存入内存；一旦发生缺页，线程可能会因页面错误而被阻塞；
-3.
-<strong>错误处理复杂</strong>：如果访问非法页面，OS可能抛出<strong>SIGBUS信号</strong>，导致数据库必须额外处理底层异常；
-4.
-<strong>性能问题</strong>：操作系统内部数据结构可能产生竞争；页表更新引发的
-TLB shootdown 会降低多核系统性能。</p>
+负责页面的加载/驱逐，但对于追求高性能与强事务一致性的数据库来说，存在以下严重问题：</p>
+<ol type="1">
+<li><strong>事务安全性差</strong>：OS可能随时将脏页刷新到磁盘，打破事务的原子性和一致性；</li>
+<li><strong>I/O延迟不可控</strong>：如果采用OS，那么DBMS无从得知哪些pages已经存入内存；一旦发生缺页，线程可能会因页面错误而被阻塞；</li>
+<li><strong>错误处理复杂</strong>：如果访问非法页面，OS可能抛出<strong>SIGBUS信号</strong>，导致数据库必须额外处理底层异常；</li>
+<li><strong>性能问题</strong>：操作系统内部数据结构可能产生竞争；页表更新引发的
+TLB shootdown 会降低多核系统性能。</li>
+</ol>
 <blockquote>
 <p>为什么DBMS更倾向于自行管理内存？ 1.
 <strong>更好地控制脏页刷新顺序</strong>：保证事务日志优先、数据页随后写入；
