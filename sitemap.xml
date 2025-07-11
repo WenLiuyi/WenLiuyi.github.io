@@ -318,14 +318,14 @@
 
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/C-Primer/</loc>
+    <loc>http://wenliuyi.github.io/categories/Algorithms/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Algorithms/</loc>
+    <loc>http://wenliuyi.github.io/categories/C-Primer/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -353,6 +353,13 @@
   </url>
   
   <url>
+    <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -361,13 +368,6 @@
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/</loc>
-    <lastmod>2025-07-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -395,14 +395,14 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/C-Primer/</loc>
+    <loc>http://wenliuyi.github.io/categories/OS/BUAA-OS-lab/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/OS/BUAA-OS-lab/</loc>
+    <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/C-Primer/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
