@@ -366,13 +366,6 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/C-Primer/Class-Design-Techniques/</loc>
-    <lastmod>2025-07-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/categories/C-Primer/C-STL/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -380,7 +373,7 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
+    <loc>http://wenliuyi.github.io/categories/C-Primer/Class-Design-Techniques/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -388,6 +381,13 @@
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/</loc>
+    <lastmod>2025-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
     <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
