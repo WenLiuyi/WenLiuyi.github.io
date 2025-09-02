@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wenliuyi.github.io/posts/42e930ef.html</loc>
+    <loc>http://wenliuyi.github.io/posts/4e29148d.html</loc>
     
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -12,6 +12,42 @@
   
   <url>
     <loc>http://wenliuyi.github.io/posts/76aa9d6e.html</loc>
+    
+    <lastmod>2025-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/219ff87b.html</loc>
+    
+    <lastmod>2025-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/cda30c10.html</loc>
+    
+    <lastmod>2025-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/b1ea32a.html</loc>
+    
+    <lastmod>2025-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/42e930ef.html</loc>
     
     <lastmod>2025-07-27</lastmod>
     
@@ -47,45 +83,9 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/posts/cda30c10.html</loc>
-    
-    <lastmod>2025-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/posts/b1ea32a.html</loc>
-    
-    <lastmod>2025-07-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/posts/4e29148d.html</loc>
-    
-    <lastmod>2025-07-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/posts/d1f88670.html</loc>
     
     <lastmod>2025-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/posts/e8d1fb4.html</loc>
-    
-    <lastmod>2025-07-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -301,7 +301,7 @@
 
   <url>
     <loc>http://wenliuyi.github.io/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -309,35 +309,49 @@
   
   <url>
     <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/C/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/OOP/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/tags/Go/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/tags/tRPC/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/C/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/KV-Cache/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -345,106 +359,99 @@
 
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/C-Primer/</loc>
-    <lastmod>2025-07-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/categories/Algorithms/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/C-Primer/Class-Design-Techniques/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <loc>http://wenliuyi.github.io/categories/C-Primer/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Database/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/C-Primer/C-STL/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/</loc>
-    <lastmod>2025-07-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/</loc>
-    <lastmod>2025-07-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/categories/Go/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <loc>http://wenliuyi.github.io/categories/C-Primer/Class-Design-Techniques/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Transformer/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/OS/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/OS/BUAA-OS-lab/</loc>
-    <lastmod>2025-07-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/C-Primer/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/High-Concurrency/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/OS/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/OS/BUAA-OS-lab/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/Database/CMU-14-445/C-Primer/</loc>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Parallelism/verl/</loc>
-    <lastmod>2025-07-27</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
