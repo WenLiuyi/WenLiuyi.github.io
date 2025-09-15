@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wenliuyi.github.io/posts/ab0f7bb9.html</loc>
+    
+    <lastmod>2025-09-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://wenliuyi.github.io/posts/ba1e1693.html</loc>
     
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -319,7 +328,7 @@
 
   <url>
     <loc>http://wenliuyi.github.io/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -327,35 +336,35 @@
   
   <url>
     <loc>http://wenliuyi.github.io/tags/C/</loc>
-    <lastmod>2025-09-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/OOP/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/Go/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/KV-Cache/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -364,56 +373,56 @@
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Database/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/RL/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Transformer/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Introduction-to-AI/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/OS/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/High-Concurrency/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/verl/</loc>
-    <lastmod>2025-09-08</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
