@@ -389,6 +389,13 @@
 
   
   <url>
+    <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
+    <lastmod>2025-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://wenliuyi.github.io/tags/C/</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -397,13 +404,6 @@
   
   <url>
     <loc>http://wenliuyi.github.io/tags/OOP/</loc>
-    <lastmod>2025-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -447,14 +447,14 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Transformer/</loc>
+    <loc>http://wenliuyi.github.io/categories/Distributed-System/</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Distributed-System/</loc>
+    <loc>http://wenliuyi.github.io/categories/Transformer/</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -468,14 +468,14 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/OS/</loc>
+    <loc>http://wenliuyi.github.io/categories/Network/</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Network/</loc>
+    <loc>http://wenliuyi.github.io/categories/OS/</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
