@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wenliuyi.github.io/posts/2d0d7608.html</loc>
+    
+    <lastmod>2025-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/1e6a04d4.html</loc>
+    
+    <lastmod>2025-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/76aa9d6e.html</loc>
+    
+    <lastmod>2025-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/b1ea32a.html</loc>
+    
+    <lastmod>2025-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://wenliuyi.github.io/posts/d4ce6176.html</loc>
     
     <lastmod>2025-09-28</lastmod>
@@ -12,15 +48,6 @@
   
   <url>
     <loc>http://wenliuyi.github.io/posts/7824989e.html</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/posts/b1ea32a.html</loc>
     
     <lastmod>2025-09-26</lastmod>
     
@@ -84,15 +111,6 @@
   
   <url>
     <loc>http://wenliuyi.github.io/posts/ca7e7de.html</loc>
-    
-    <lastmod>2025-09-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/posts/76aa9d6e.html</loc>
     
     <lastmod>2025-09-18</lastmod>
     
@@ -335,15 +353,6 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/posts/1e6a04d4.html</loc>
-    
-    <lastmod>2025-07-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/posts/8b715a29.html</loc>
     
     <lastmod>2025-05-20</lastmod>
@@ -382,7 +391,7 @@
 
   <url>
     <loc>http://wenliuyi.github.io/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -390,35 +399,35 @@
   
   <url>
     <loc>http://wenliuyi.github.io/tags/Web-Platforms-Display/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/C/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/OOP/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/Go/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/tags/KV-Cache/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -427,63 +436,63 @@
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Database/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Parallelism/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/RL/</loc>
-    <lastmod>2025-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/categories/Distributed-System/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Transformer/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/High-Concurrency/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <loc>http://wenliuyi.github.io/categories/Distributed-System/</loc>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/Network/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/High-Concurrency/</loc>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/OS/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://wenliuyi.github.io/categories/verl/</loc>
-    <lastmod>2025-09-28</lastmod>
+    <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
