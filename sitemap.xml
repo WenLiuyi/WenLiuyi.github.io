@@ -4,7 +4,16 @@
   <url>
     <loc>http://wenliuyi.github.io/posts/5d9f220e.html</loc>
     
-    <lastmod>2025-10-10</lastmod>
+    <lastmod>2025-10-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/posts/2ac460b1.html</loc>
+    
+    <lastmod>2025-10-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -174,15 +183,6 @@
   
   <url>
     <loc>http://wenliuyi.github.io/posts/f79d4b0.html</loc>
-    
-    <lastmod>2025-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://wenliuyi.github.io/posts/2ac460b1.html</loc>
     
     <lastmod>2025-09-08</lastmod>
     
@@ -472,13 +472,6 @@
   </url>
   
   <url>
-    <loc>http://wenliuyi.github.io/categories/Distributed-System/</loc>
-    <lastmod>2025-10-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://wenliuyi.github.io/categories/High-Concurrency/</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -494,6 +487,13 @@
   
   <url>
     <loc>http://wenliuyi.github.io/categories/OS/</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://wenliuyi.github.io/categories/Distributed-System/</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
